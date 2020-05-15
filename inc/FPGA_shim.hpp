@@ -34,5 +34,6 @@ class FPGA_hndl
         virtual int waitComplete() = 0;
         virtual int sendComplete() = 0;
         virtual int getOutput(Accel_Payload* pyld) = 0;
+        virtual int sendOutput(Accel_Payload* pyld) = 0;
 };
 
