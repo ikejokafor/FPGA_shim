@@ -233,6 +233,18 @@ class FPGA_hndl
         virtual int sendOutput(Accel_Payload* pyld) = 0;
         
         
-        int m_remAddrOfst;
+        // ----------------------------------------------------------------------------------------------------------------------------------------------
+        /**
+         *		@brief			function description
+         *		@param	param0	param0 description
+         *		@param	param1	param1 description
+         *		@return			0 success, 1 failure
+         */
+        // ----------------------------------------------------------------------------------------------------------------------------------------------
+        virtual void resetMemSpace() = 0;
+        
+        
+        uint64_t m_remAddrOfst;
+        uint64_t m_memStartOft;
 };
 
