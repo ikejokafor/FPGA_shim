@@ -16,7 +16,7 @@ class Accel_Payload
     public:        
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			constructor for remote device payload
+         *      \brief            constructor for remote device payload
          *      \return         returns pointer to Accelerator payload objects
          */
         // ---------------------------------------------------------------------------------------------------------------------------------------------- 
@@ -25,7 +25,7 @@ class Accel_Payload
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			destructor for remote device payload
+         *      \brief            destructor for remote device payload
          */
         // ---------------------------------------------------------------------------------------------------------------------------------------------- 
         virtual ~Accel_Payload() { }
@@ -33,7 +33,7 @@ class Accel_Payload
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			serializes payload to sent ot remote device
+         *      \brief            serializes payload to sent ot remote device
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------       
         virtual void serialize() = 0;
@@ -41,7 +41,7 @@ class Accel_Payload
 
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			deserializes payload from remote device
+         *      \brief            deserializes payload from remote device
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual void deserialize() = 0;
@@ -58,8 +58,8 @@ class FPGA_hndl
     public:
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			initializes remote hardware for processing
-         *		\return			0 success, 1 failure
+         *      \brief            initializes remote hardware for processing
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int hardware_init() = 0;
@@ -67,8 +67,8 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			initializes software shim on host device for processing
-         *		\return			0 success, 1 failure
+         *      \brief            initializes software shim on host device for processing
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int software_init(soft_init_param* param) = 0;
@@ -76,10 +76,10 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			allocates host and remote memory space for remote device payload
-         *		\param[in]	    pyld object holding metadata of payload
-         *		\param[in]	    size size of payload
-         *		\return			0 success, 1 failure
+         *      \brief            allocates host and remote memory space for remote device payload
+         *      \param[in]        pyld object holding metadata of payload
+         *      \param[in]        size size of payload
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------        
         virtual uint64_t allocate(Accel_Payload* pyld, uint64_t size) = 0;
@@ -87,9 +87,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			deallocates host and remote memory space for remote device payload
-         *		\param[in]	    pyld object holding metadata of payload
-         *		\return			0 success, 1 failure
+         *      \brief            deallocates host and remote memory space for remote device payload
+         *      \param[in]        pyld object holding metadata of payload
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual void deallocate(Accel_Payload* pyld) = 0;
@@ -97,8 +97,8 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			remote rountine used to wait for remote device configuration (Simulation Only)
-         *		\return			address to payload on success, 1 failure
+         *      \brief            remote rountine used to wait for remote device configuration (Simulation Only)
+         *      \return            address to payload on success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual uint64_t waitConfig() = 0;
@@ -106,9 +106,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			writes remote device configuration data to remote device
-         *		\param[in]	    pyld object holding metadata of payload
-         *		\return			0 success, 1 failure
+         *      \brief            writes remote device configuration data to remote device
+         *      \param[in]        pyld object holding metadata of payload
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int wrConfig(Accel_Payload* pyld) = 0;
@@ -116,9 +116,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			reads remote device configuration data from remote device
-         *		\param[in]	    pyld object holding metadata of payload
-         *		\return			0 success, 1 failure
+         *      \brief            reads remote device configuration data from remote device
+         *      \param[in]        pyld object holding metadata of payload
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int rdConfig(Accel_Payload* pyld) = 0;
@@ -126,7 +126,7 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			remote rountine used to wait for remote device paramater data (Simulation Only)
+         *      \brief            remote rountine used to wait for remote device paramater data (Simulation Only)
          *      \param[in,out]  addr address to place payload information
          *      \param[in]      size size of payload
          */
@@ -136,18 +136,18 @@ class FPGA_hndl
 
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			writes payload holding remote device paramater data to remote device
-         *		\param[in]	    pyld object holding metadata of payload
-         *      \return			0 success, 1 failure
+         *      \brief            writes payload holding remote device paramater data to remote device
+         *      \param[in]        pyld object holding metadata of payload
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int wrParam(Accel_Payload* pyld) = 0;
-	
+    
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			remote rountine used to wait for host signal for remote device to start processing (Simulation Only)
-         *		\return			0 success, 1 failure
+         *      \brief            remote rountine used to wait for host signal for remote device to start processing (Simulation Only)
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int waitStart() = 0;
@@ -155,9 +155,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			routine for host devie to signal remote device to start processing
-         *		\param[in]	    pyld object holding information to start remote device
-         *		\return			0 success, 1 failure
+         *      \brief            routine for host devie to signal remote device to start processing
+         *      \param[in]        pyld object holding information to start remote device
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int sendStart(Accel_Payload* pyld) = 0;
@@ -165,8 +165,8 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			routine used by host device to wait for signal from remote device that processing is complete
-         *		\return			0 success, 1 failure
+         *      \brief            routine used by host device to wait for signal from remote device that processing is complete
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int waitComplete() = 0;
@@ -174,8 +174,8 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			routine used by remote device signal host device that processing is complete (Simulation Only)
-         *		\return			0 success, 1 failure
+         *      \brief            routine used by remote device signal host device that processing is complete (Simulation Only)
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int sendComplete() = 0;
@@ -183,9 +183,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			routine used by host device to receive output data from host device
-         *		\param[in,out]	pyld object holding information to hold remote device output
-         *		\return			0 success, 1 failure
+         *      \brief            routine used by host device to receive output data from host device
+         *      \param[in,out]    pyld object holding information to hold remote device output
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int getOutput(Accel_Payload* pyld) = 0;
@@ -194,9 +194,9 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			routine used by remote device to send output data to host device (Simulation Only)
-         *		\param[in,out]	pyld object holding information to hold remote device output
-         *		\return			0 success, 1 failure
+         *      \brief            routine used by remote device to send output data to host device (Simulation Only)
+         *      \param[in,out]    pyld object holding information to hold remote device output
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int sendOutput(Accel_Payload* pyld) = 0;
@@ -204,8 +204,8 @@ class FPGA_hndl
         
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         /**
-         *		\brief			host routine for reseting remote memory address space distribution
-         *		\return			0 success, 1 failure
+         *      \brief            host routine for reseting remote memory address space distribution
+         *      \return            0 success, 1 failure
          */
         // ----------------------------------------------------------------------------------------------------------------------------------------------
         virtual int resetMemSpace() = 0;
